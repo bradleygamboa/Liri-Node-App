@@ -6,14 +6,14 @@ var fs = require('fs');
 
 
 
-var getArtistNames = function(artist) {
+var Artist = function(artist) {
     return artist.name;
 }
 
-var getMeSpotify = function(songName) {
+var Spotify = function(songName) {
 
     if (songName === undefined) {
-        songName = 'The Sign by Ace of Base';
+        songName = 'Ace of Base - The Sign';
 
     }
 
@@ -27,7 +27,7 @@ var getMeSpotify = function(songName) {
 
         for (var i = 0; i < songs.length; i++) {
             console.log(i);
-            console.log('artist(s): ' + songs[i].artists.map(getArtistNames));
+            console.log('artist(s): ' + songs[i].artists.map(Artist));
             console.log('song name: ' + songs[i].name);
             console.log('preview song: ' + songs[i].preview_url);
             console.log('album: ' + songs[i].album.name);
@@ -36,7 +36,7 @@ var getMeSpotify = function(songName) {
     });
 }
 
-var getMyTweets = function() {
+var Twitter = function() {
 
     var client = new twitter(keys.twitterKeys);
 
@@ -53,7 +53,7 @@ var getMyTweets = function() {
     });
 }
 
-var getMeMovie = function(movieName) {
+var Omdb = function(movieName) {
 
     if (movieName === undefined) {
         movieName = 'Mr Nobody';
@@ -98,13 +98,13 @@ var doWhatItSays = function() {
 var pick = function(caseData, functionData) {
     switch (caseData) {
         case 'my-tweets':
-            getMyTweets();
+            Twitter();
             break;
         case 'spotify-this-song':
-            getMeSpotify(functionData);
+            Spotify(functionData);
             break;
         case 'movie-this':
-            getMeMovie(functionData);
+            Omdb(functionData);
             break;
         case 'do-what-it-says':
             doWhatItSays();
