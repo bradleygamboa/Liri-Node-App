@@ -10,8 +10,8 @@ var Twitter = function() {
     var client = new twitter(keys.twitterKeys);
 
     //my screename entered to pull tweets. (any twitter handle can be used)
-    var params = { screen_name: 'superfinethanks' };
-    client.get('statuses/user_timeline', params, function(error, tweets, response) {
+    var userName = { screen_name: 'superfinethanks' };
+    client.get('statuses/user_timeline', userName, function(error, tweets, response) {
         if (!error) {
 
             for (var i = 0; i < tweets.length; i++) {
